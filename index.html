@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deiams Nooh - Coming Soon</title>
+    <style>
+        :root {
+            --primary: #14b8a6;
+            --dark: #0f766e;
+            --light: #f0fdfa;
+            --text-dark: #134e4a;
+            --text-light: #f8fafc;
+            --bg-dark: #0f172a;
+            --bg-light: #f8fafc;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: var(--bg-dark);
+            --text-color: var(--text-light);
+            --card-bg: rgba(15, 23, 42, 0.8);
+        }
+
+        [data-theme="light"] {
+            --bg-color: var(--bg-light);
+            --text-color: var(--text-dark);
+            --card-bg: rgba(248, 250, 252, 0.8);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 2;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 80px;
+            backdrop-filter: blur(5px);
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        a:hover {
+            color: var(--primary);
+        }
+
+        .notify-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .notify-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .countdown-item { min-width: 70px; padding: 1rem; }
+            .countdown-number { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="theme-switch" id="themeToggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </div>
+
+    <div class="lang-switch" id="langToggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <h1 id="mainTitle">Our website is coming soon!</h1>
+        <p id="mainText">We're working on something amazing. Stay tuned for the launch.</p>
+        
+        <div class="countdown">
+            <div class="countdown-item">
+                <div class="countdown-number" id="days">00</div>
+                <div id="daysLabel">Days</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="hours">00</div>
+                <div id="hoursLabel">Hours</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="minutes">00</div>
+                <div id="minutesLabel">Minutes</div>
+            </div>
+            <div class="countdown-item">
+                <div class="countdown-number" id="seconds">00</div>
+                <div id="secondsLabel">Seconds</div>
+            </div>
+        </div>
+        
+        <button class="notify-btn" id="notifyBtn">Notify me on launch</button>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <a href="mailto:noohdeia@gmail.com">noohdeia@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                <a href="tel:+97470646311">+974 7064 6311</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                title: "Our website is coming soon!",
+                text: "We're working on something amazing. Stay tuned for the launch.",
+                days: "Days",
+                hours: "Hours",
+                minutes: "Minutes",
+                seconds: "Seconds",
+                notify: "Notify me on launch",
+                email: "noohdeia@gmail.com",
+                phone: "+974 7064 6311"
+            },
+            fr: {
+                title: "Notre site arrive bientôt !",
+                text: "Nous travaillons sur quelque chose d'exceptionnel. Restez connecté pour le lancement.",
+                days: "Jours",
+                hours: "Heures",
+                minutes: "Minutes",
+                seconds: "Secondes",
+                notify: "Me notifier lors du lancement",
+                email: "noohdeia@gmail.com",
+                phone: "+974 7064 6311"
+            },
+            ar: {
+                title: "موقعنا قريباً!",
+                text: "نحن نعمل على شيء رائع. تابعنا لمعرفة موعد الإطلاق.",
+                days: "أيام",
+                hours: "ساعات",
+                minutes: "دقائق",
+                seconds: "ثواني",
+                notify: "أخبرني عند الإطلاق",
+                email: "noohdeia@gmail.com",
+                phone: "974 7064 6311+"
+            }
+        };
+
+        // Current language and theme
+        let currentLang = 'en';
+        let currentTheme = 'light';
+
+        // DOM elements
+        const themeToggle = document.getElementById('themeToggle');
+        const langToggle = document.getElementById('langToggle');
+        const mainTitle = document.getElementById('mainTitle');
+        const mainText = document.getElementById('mainText');
+        const daysLabel = document.getElementById('daysLabel');
+        const hoursLabel = document.getElementById('hoursLabel');
+        const minutesLabel = document.getElementById('minutesLabel');
+        const secondsLabel = document.getElementById('secondsLabel');
+        const notifyBtn = document.getElementById('notifyBtn');
+
+        // Theme toggle
+        themeToggle.addEventListener('click', () => {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', currentTheme);
+            
+            // Save preference
+            localStorage.setItem('theme', currentTheme);
+        });
+
+        // Language toggle (cycles through en -> fr -> ar -> en)
+        langToggle.addEventListener('click', () => {
+            const langs = ['en', 'fr', 'ar'];
+            const currentIndex = langs.indexOf(currentLang);
+            currentLang = langs[(currentIndex + 1) % langs.length];
+            updateLanguage();
+            
+            // Save preference
+            localStorage.setItem('language', currentLang);
+        });
+
+        // Update all text elements based on current language
+        function updateLanguage() {
+            const t = translations[currentLang];
+            mainTitle.textContent = t.title;
+            mainText.textContent = t.text;
+            daysLabel.textContent = t.days;
+            hoursLabel.textContent = t.hours;
+            minutesLabel.textContent = t.minutes;
+            secondsLabel.textContent = t.seconds;
+            notifyBtn.textContent = t.notify;
+            
+            // Update direction for Arabic
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+        }
+
+        // Countdown timer
+        const launchDate = new Date("2025-07-27").getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = launchDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").textContent = days.toString().padStart(2, "0");
+            document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+            
+            if (diff < 0) {
+                clearInterval(countdown);
+                document.querySelector(".countdown").innerHTML = `<div>${currentLang === 'ar' ? 'الموقع متاح الآن!' : currentLang === 'fr' ? 'Le site est lancé !' : 'Website is live!'}</div>`;
+            }
+        }
+        
+        // Notification button
+        notifyBtn.addEventListener('click', function() {
+            const promptText = currentLang === 'ar' ? 'الرجاء إدخال بريدك الإلكتروني ليتم إعلامك عند الإطلاق:' 
+                            : currentLang === 'fr' ? 'Entrez votre email pour être notifié du lancement:' 
+                            : 'Enter your email to be notified on launch:';
+            
+            const successText = currentLang === 'ar' ? 'شكراً! سنقوم بإعلامك عند الإطلاق.' 
+                              : currentLang === 'fr' ? 'Merci ! Nous vous informerons lors du lancement.' 
+                              : 'Thank you! We will notify you on launch.';
+            
+            const email = prompt(promptText);
+            if (email) {
+                alert(successText);
+                // Here you would typically send the email to your backend
+            }
+        });
+
+        // Initialize
+        function init() {
+            // Load saved preferences
+            const savedTheme = localStorage.getItem('theme');
+            const savedLang = localStorage.getItem('language');
+            
+            if (savedTheme) {
+                currentTheme = savedTheme;
+                document.body.setAttribute('data-theme', currentTheme);
+            }
+            
+            if (savedLang) {
+                currentLang = savedLang;
+            }
+            
+            updateLanguage();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        init();
+    </script>
+</body>
+</html>
